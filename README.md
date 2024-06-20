@@ -1,7 +1,7 @@
 # Day 01 – Java bootcamp
 ### OOP/Collections
 
-*Takeaways: Today you will learn how to model the operation of various collections correctly, and create a full-scale money transfer application*
+*Takeaways: Today you will learn how to correctly model the operation of different collections and create a full-fledged money transfer application.*
 
 # Contents
 1. [Chapter I](#chapter-i) \
@@ -25,60 +25,60 @@
 
 # Chapter I 
 ### Preamble
-Domain modeling is the most challenging task in software development. Solving this task correctly ensures flexibility of the implemented system.
-Programming languages supporting the object-oriented programming (OOP) concept enable to effectively divide business processes into logical components called classes.
+Domain modeling is the most challenging task in software development. Correct solution of this task ensures flexibility of the implemented system.
+Programming languages supporting the concept of object-oriented programming (OOP) allow to effectively divide business processes into logical components called classes.
 Each class must comply with SOLID principles:
-1.	Single responsibility principle: a class contains a single logically associated functionality (a coffee machine cannot clean and monitor changes in the call stack; its purpose is to make coffee).
-2.	Open–closed principle: each class can offer an option to extend its functionality. However, such extension should not provide for modifying source class code.
+1.	Single responsibility principle: a class contains a single logically related functionality (a coffee machine cannot clean and monitor changes in the call stack; its purpose is to make coffee).
+2.	Open-closed principle: each class may provide an option to extend its functionality. However, such an extension should not require modification of the source class code.
 3.	Liskov substitution principle: derived classes only ADD to the functionality of a source class without modifying it.
-4.	Interface segregation principle: there are many points (interfaces) that describe a logically associated behavior. There is no general-purpose interface.
+4.	Interface separation principle: There are many points (interfaces) that describe a logically related behavior. There is no such thing as a general-purpose interface.
 5.	Dependency inversion principle: a system must not depend on specific entities; all dependencies are based on abstractions (interfaces).
 
-Today, you should focus on the first SOLID principle.
+Today you should focus on the first SOLID principle.
 
 ![javanepunchman](misc/images/javanepunchman.png)
 
 # Chapter II
 ### General Rules
-- Use this page as the only reference. Do not listen to any rumors and speculations about how to prepare your solution.
-- Now there is only one Java version for you, 1.8. Make sure that compiler and interpreter of this version are installed on your machine.
-- You can use IDE to write and debug the source code.
-- The code is read more often than written. Read carefully the [document](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf) where code formatting rules are given. When performing each task, make sure you follow the generally accepted [Oracle standards](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html).
+- Use this page as your only reference. Do not listen to rumors and speculations about how to prepare your solution.
+- There is only one Java version for you, 1.8. Make sure you have the compiler and interpreter for this version installed on your machine.
+- You can use the IDE to write and debug the source code.
+- The code is more often read than written. Carefully read the [document](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf) where code formatting rules are given. When performing any task, make sure you follow the generally accepted [Oracle Standards](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html).
 
 - Comments are not allowed in the source code of your solution. They make it difficult to read the code.
-- Pay attention to the permissions of your files and directories.
-- To be assessed, your solution must be in your GIT repository.
-- Your solutions will be evaluated by your bootcamp mates.
-- You should not leave in your "src" directory any other file than those explicitly specified by the exercise instructions. It is recommended that you modify your .gitignore to avoid accidents.
-- When you need to get precise output in your programs, it is forbidden to display a precalculated output instead of performing the exercise correctly.
-- Have a question? Ask your neighbor on the right. Otherwise, try with your neighbor on the left.
-- Your reference manual: mates / Internet / Google. And one more thing. There's an answer to any question you may have on Stackoverflow. Learn how to ask questions correctly.
-- Read the examples carefully. They may require things that are not otherwise specified in the subject.
+- Be aware of the permissions of your files and directories.
+- Your solution must be in your GIT repository to be evaluated.
+- Your solutions will be evaluated by your fellow bootcampers.
+- You should not leave any files in your src directory other than those explicitly specified in the exercise instructions. It is recommended that you modify your .gitignore to avoid accidents.
+- If you need accurate output in your programs, it is forbidden to display precalculated output instead of running the exercise correctly.
+- Got a question? Ask your neighbor to the right. Otherwise, try your neighbor on the left.
+- Your reference guide: other peers / Internet / Google. And one more thing. For every question you have, there's an answer on Stackoverflow. Learn how to ask questions properly.
+- Read the examples carefully. They may require things not specified in the subject.
 - Use System.out for output.
 - And may the Force be with you!
-- Never leave that till tomorrow which you can do today ;)
+- Never leave for tomorrow what you can do today ;)
 
 # Chapter III
 ### Introduction to exercises
-An internal money transfer system is an integral part of many corporate applications. 
+An internal money transfer system is an integral part of many business applications. 
 
-Your today's task is to automate a business process associated with transfers of certain amounts between participants of our system.
+Your task today is to automate a business process related to transfers of certain amounts between participants of our system.
 
-Each system user can transfer a certain amount to another user. We need to make sure that even if we lose the history of incoming and outgoing transfers for a specific user, we shall still be able to recover this information.
+Each user of the system can transfer a certain amount of money to another user. We need to make sure that even if we lose the history of incoming and outgoing transfers for a particular user, we will still be able to recover this information.
 
-Inside the system, all money transactions are stored in the form of debit/credit pairs. For example, John has transferred $500 to Mike. System saves the transaction for both users:
+In the system, all money transactions are stored in the form of debit/credit pairs. For example, John transferred $500 to Mike. The system stores the transaction for both users:
 ```java
 John -> Mike, -500, OUTCOME, transaction ID
 Mike -> John, +500, INCOME, transaction ID
 ```
-To recover the connection within such pairs, identifiers of each transaction should be used.
+To restore the connection within such pairs, the identifiers of each transaction should be used.
 
-A transfer entry may obviously be lost in such a complex system—it may not be recorded for one of the users (to emulate and debug such a situation, a developer needs to be able to remove the transfer data from one of users individually). Since such situations are realistic, functionality is required for displaying all "unacknowledged transfers" (transactions recorded for one user only) and resolving such issues.
+Of course, in such a complex system, a transfer entry may be lost — it may not be recorded for one of the users (to emulate and debug such a situation, a developer must be able to remove the transfer data for one of the users individually). Since such situations are realistic, functionality is needed to display all "unacknowledged transfers" (transactions recorded for only one user) and to resolve such problems.
 
-Below is a set of exercises you can do one by one to solve the task.
+Below is a series of exercises that you can do one at a time to solve the task.
 
 # Chapter IV
-### Exercise 00 – Models
+### Exercise 00 — Models
 
 Exercise 00: Models ||
 ---|---
@@ -87,26 +87,26 @@ Files to turn-in |	User.java, Transaction.java, Program.java
 **User classes can be employed, along with:**
 Types (+ all methods of these types) |	Integer, String, UUID, enumerations
 
-Your first task is to develop basic domain models—namely, User and Transaction classes.
+Your first task is to develop basic domain models — namely, user and transaction classes.
 
-It is quite likely for different users to have the same name in the system. This problem should be solved by adding a special field for a user's unique ID. This ID can be any integer number. Specific ID creation logic is described in the next exercise.
+It is quite likely that different users in the system will have the same name. This problem should be solved by adding a special field for a user's unique ID. This ID can be any integer. The specific logic for creating the ID is described in the next exercise.
 
-Thus, the following set of states (fields) is typical for User class:
+Thus, the following set of states (fields) is typical for the User class:
 
--	Identifier
--	Name
--	Balance
+- Identifier,
+- User name,
+- Balance.
 
-Transaction class describes a money transfer between two users. Here, a unique identifier should also be defined. Since the number of such transactions can be very large, let us define the identifier as an UUID string. Thus, the following set of states (fields) is typical for Transaction class:
--	Identifier
--	Recipient (User type)
--	Sender (User type)
--	Transfer category (debits, credits)
--	Transfer amount
+The Transaction class describes a money transfer between two users. A unique identifier should also be defined here. Since the number of such transactions can be very large, we define the identifier as a UUID string. Thus, the following set of states (fields) is typical for the Transaction class:
+- Identifier,
+- Recipient (user type),
+- Sender (user type),
+- Transfer category (debit, credit),
+- Transfer amount.
 
-It is necessary to check the initial user balance (it cannot be negative), as well as the balance for the outgoing (negative amounts only) and incoming (positive amounts only) transactions (use of get/set methods).
+It is necessary to check the user's initial balance (it cannot be negative), as well as the balance for outgoing (only negative amounts) and incoming (only positive amounts) transactions (use of get/set methods).
 
-An example of use of such classes shall be contained in Program file (creation, initialization, printing object content on a console). All data for class fields must be hardcoded in Program.
+An example of the use of such classes should be included in the Program file (creation, initialization, printing the object contents to a console). All data for class fields must be hard-coded in the Program.
 
 # Chapter V
 ### Exercise 01 – ID Generator
@@ -117,20 +117,20 @@ Turn-in directory |	ex01
 Files to turn-in |	UserIdsGenerator.java, User.java, Program.java
 **All permissions from the previous exercise can be used**
 
-Make sure that each user ID is unique. To do so, create UserIdsGenerator class. Behavior of the object of this class defines the functionality for generating user IDs.
+Make sure that each user ID is unique. To do this, create the UserIdsGenerator class. The behavior of the object of this class defines the functionality for generating user IDs.
 
-State-of-the-art database management systems support autoincrement principle where each new ID is the value of the previously generated ID +1.
-So, UserIdsGenerator class contains the last generated ID as its state. UserIdsGenerator behavior is defined by int generateId() method that returns a newly generated ID each time it is called.
+Modern database management systems support auto-increment principle, where each new ID is the value of the previously generated ID +1.
+Thus, the UserIdsGenerator class contains the last generated ID as its state. The behavior of UserIdsGenerator is defined by the int generateId() method, which returns a newly generated ID each time it is called.
 
-An example of use of such classes shall be contained in Program file (creation, initialization, printing object content on a console).
+An example of using such classes is contained in the program file (creation, initialization, printing object contents to a console).
 
 **Notes**:
 
-- Make sure only one UserIdsGenerator object exists (see the Singleton pattern). It is required because existence of several objects of this class cannot guarantee that all user identifiers are unique.
+- Make sure that only one UserIdsGenerator object exists (see the Singleton pattern). It is required because the existence of multiple objects of this class cannot guarantee that all user identifiers are unique.
 
-- User identifier must be read-only since it is initialized only once (when the object is created) and cannot be modified later during the program execution.
+- The user identifier must be read-only because it is initialized only once (when the object is created) and cannot be changed later during program execution.
 
-- Temporary logic for identifier initialization should be added to User class constructor:
+- Temporary logic for identifier initialization should be added to the User class constructor:
 ```java
 public User(...) {
 	this.id = UserIdsGenerator.getInstance().generateId();
@@ -146,30 +146,30 @@ Turn-in directory	| ex02
 Files to turn-in |	UsersList.java, UsersArrayList.java, User.java,Program.java, etc.
 **All permissions from the previous exercise  + throw can be used.**
 
-Now we need to implement a functionality for storing users while the program runs. 
+Now we need to implement some functionality for saving users while the program is running. 
 
-At the moment, your application has no persistent storage (such as a file system or a database). However, we want to avoid the dependence of your logic on user storage implementation method. To ensure more flexibility, let us define UsersList interface that describes the following behavior:
+Currently, your application does not have any persistent storage (such as a file system or database). However, we want to avoid making your logic dependent on the user storage implementation method. To provide more flexibility, we define a UsersList interface that describes the following behavior
 
--	Add a user
--	Retrieve a user by ID
--	Retrieve a user by index
--	Retrieve the number of users
+- Add a user;
+- Get a user by ID;
+- Get a user by index;
+- Get number of users.
 
-This interface will enable to develop the business logic of your application so that a specific storage implementation does not affect other system components.
+This interface will allow you to develop the business logic of your application so that a specific storage implementation does not affect other system components.
 
-We shall also implement UsersArrayList class that implements UsersList interface.
+We will also implement a UsersArrayList class that implements the UsersList interface.
 
-This class shall use an array to store user data. The default array size is 10. If the array is full, its size is increased by half. The user-adding method puts an object of User type in the first empty (vacant) cell of the array.
+This class will use an array to store user data. The default size of the array is 10. When the array is full, its size is increased by half. The user-add method puts an object of type User into the first empty cell of the array.
 
-In case of an attempt to retrieve a user with a non-existent ID, an unchecked UserNotFoundException must be thrown.
+If an attempt is made to retrieve a user with a non-existent ID, a non-checked UserNotFoundException must be thrown.
 
-An example of use of such classes shall be contained in Program file (creation, initialization, printing object content on a console).
+An example of using such classes is included in the program file (creating, initializing, printing object contents to a console).
 
 **Note**:<br>
 Nested `ArrayList<T>` Java class has the same structure. By modeling behavior of this class on your own, you will learn how to use mechanisms of this standard library class. 
 
 # Chapter VII
-### Exercise 03 – List of Transactions
+### Exercise 03 — List of Transactions
 
 Exercise 03: List of Transactions||
 ---|---
@@ -180,9 +180,9 @@ Files to turn-in | TransactionsList.java, TransactionsLinkedList.java, User.java
 Unlike users, a list of transactions requires a special implementation approach. Since the number of transaction creation operations can be very large, we need a storage method to avoid a costly array size extension. 
 
 In this task, we offer you to create TransactionsList interface describing the following behavior:
-- Add a transaction
-- Remove a transaction by ID (in this case, UUID string identifier is used)
-- Transform into array (ex. Transaction[] toArray())
+- Add a transaction;
+- Remove a transaction by ID (in this case, UUID string identifier is used);
+- Transform into array (ex. Transaction[] toArray()).
 
 A list of transactions shall be implemented as a linked list (LinkedList) in TransactionsLinkedList class. Therefore, each transaction shall contain a field with a link to the next transaction object.
 If an attempt is made to remove a transaction with non-existent ID, TransactionNotFoundException runtime exception must be thrown.
@@ -190,7 +190,7 @@ An example of use of such classes shall be contained in Program file (creation, 
 
 **Note**:<br>
 - We need to add transactions field of TransactionsList type to User class so that each user can store the list of their transactions.
-- A transaction must be added with a SINGLE operation (O(1))
+- A transaction must be added with a SINGLE operation (O(1)).
 - `LinkedList<T>` nested Java class has the same structure, a bidirectional linked list.
 
 # Chapter VIII
@@ -202,22 +202,21 @@ Turn-in directory |	ex04
 Files to turn-in |	TransactionsService.java, Program.java, etc.
 **All permissions from the previous exercise can be used**
 
-The business logic level of the application is located in service classes. Such classes contain basic algorithms of the system, automated processes, etc. These classes are usually designed based on the Facade pattern that can encapsulate behavior of several classes.
+The business logic level of the application is located in service classes. Such classes contain basic system algorithms, automated processes, etc. These classes are usually designed according to the facade pattern, which can encapsulate the behavior of several classes.
 
-In this case, TransactionsService class must contain a field of UserList type for user interactions and provide the following functionality:
--	Adding a user
--	Retrieving a user's balance
+In this case, the TransactionsService class must contain a UserList type field for user interaction and provide the following functionality
+- Add a user;
+- Get a user's balance.
+- Perform a transfer transaction (user IDs and transfer amount are specified). In this case, two transactions of type DEBIT/CREDIT are created and added to the receiver and sender. The IDs of both transactions must be the same;
+- Get transfers of a specific user (an ARRAY of transfers is returned). Remove a transaction by ID for a specific user (transaction ID and user ID are specified);
+- Validate transactions (returns an ARRAY of unpaired transactions).
 
--	Performing a transfer transaction (user IDs and transfer amount are specified). In this case, two transactions of DEBIT/CREDIT types are created and added to recipient and sender. IDs of both transactions must be equal
--	Retrieving transfers of a specific user (an ARRAY of transfers is returned). Removing a transaction by ID for a specific user (transaction ID and user ID are specified)
--	Check validity of transactions (returns an ARRAY of unpaired transactions).
+In case of an attempt to transfer the amount exceeding the user's remaining balance, the IllegalTransactionException runtime exception must be thrown.
 
-In case of an attempt to make a transfer of the amount exceeding user's residual balance, IllegalTransactionException runtime exception must be thrown.
-
-An example of use of such classes shall be contained in Program file (creation, initialization, printing object content on a console).
+An example of using such classes is included in the program file (creation, initialization, printing object contents to a console).
 
 # Chapter IX
-### Exercise 05 – Menu
+### Exercise 05 — Menu
 
 Exercise 05: Menu||
 ---|---
@@ -225,14 +224,13 @@ Turn-in directory |	ex05
 Files to turn-in |	Menu.java, Program.java, etc.
 **All permissions from the previous exercise can be used, as well as try/catch**
 
-As a result, you should create a functioning application with a console
-menu. Menu functionality must be implemented in the respective class with a link field to TransactionsService.
+As a result, you should have a working application with a console menu. The menu functionality must be implemented in the appropriate class with a link field to TransactionsService.
 
-Each menu item must be accompanied by the number of the command entered by a user to call an action.
+Each menu item must be accompanied by the number of the command that a user enters to invoke an action.
 
-The application shall support two launch modes—production (standard mode) and dev (where transfer information for a specific user can be removed by user ID, and a function that checks the validity of all transfers can be run). 
+The application must support two startup modes — production (default mode) and dev (where transfer information for a specific user can be removed by user ID and a function that checks the validity of all transfers can be executed). 
 
-If an exception is thrown, a message containing information about the error shall appear, and user shall be provided an ability to enter valid data.
+If an exception is thrown, a message containing information about the error is displayed and the user is provided with an opportunity to enter valid data.
 
 The application operation scenario is as follows (the program must carefully follow this output example):
 

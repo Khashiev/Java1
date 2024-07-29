@@ -32,7 +32,15 @@ public class Program {
         service.removeUserTransaction(array[0].getId(), 1);
 
         System.out.println();
+
+        array = service.getUserTransactionsList(1);
+        array2 = service.getUserTransactionsList(2);
+
         for (Transaction tran : array) {
+            tran.printTransaction();
+        }
+
+        for (Transaction tran : array2) {
             tran.printTransaction();
         }
 
